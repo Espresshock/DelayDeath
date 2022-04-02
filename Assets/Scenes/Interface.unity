@@ -860,8 +860,10 @@ GameObject:
   - component: {fileID: 714200500}
   - component: {fileID: 714200502}
   - component: {fileID: 714200501}
+  - component: {fileID: 714200503}
+  - component: {fileID: 714200504}
   m_Layer: 5
-  m_Name: Space0
+  m_Name: Playspace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -925,6 +927,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714200499}
   m_CullTransparentMesh: 1
+--- !u!114 &714200503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714200499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef18d0d1f25d134e8c015602c6e9fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &714200504
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714200499}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &986406987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1613,6 +1639,7 @@ MonoBehaviour:
     effect: 0
     cardDescription: 
     thisImage: {fileID: 0}
+  CardToHand: {fileID: 8072247853872004109, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
   x: 0
   deckSize: 10
 --- !u!4 &1267916226
@@ -1714,9 +1741,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 1662423253}
     m_Modifications:
     - target: {fileID: 1320295429068283552, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
+      propertyPath: Hand
+      value: 
+      objectReference: {fileID: 1662423252}
+    - target: {fileID: 1320295429068283552, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
       propertyPath: cardBack
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1320295429068283552, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
+      propertyPath: Playspace
+      value: 
+      objectReference: {fileID: 714200499}
+    - target: {fileID: 4572756347644322163, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
+      propertyPath: Hand
+      value: 
+      objectReference: {fileID: 1662423252}
     - target: {fileID: 8072247853872004108, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1805,13 +1844,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardInHand
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5625860016050680606, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
+--- !u!1 &1314883395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8072247853872004109, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
+  m_PrefabInstance: {fileID: 1304577696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1314883396 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8072247853872004108, guid: 4cd2a1bbf10329547988ebc5366cd8c0, type: 3}
   m_PrefabInstance: {fileID: 1304577696}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1314883404
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314883395}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1322578454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,7 +2669,7 @@ GameObject:
   - component: {fileID: 1662423254}
   - component: {fileID: 1662423256}
   - component: {fileID: 1662423258}
-  - component: {fileID: 1662423257}
+  - component: {fileID: 1662423259}
   m_Layer: 5
   m_Name: PlayerHand
   m_TagString: Untagged
@@ -2697,34 +2754,14 @@ MonoBehaviour:
     m_Top: 5
     m_Bottom: 5
   m_ChildAlignment: 4
-  m_Spacing: 250
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_Spacing: 75
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1662423257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662423252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
-  m_LayoutPriority: 1
 --- !u!225 &1662423258
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2737,6 +2774,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1662423259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662423252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef18d0d1f25d134e8c015602c6e9fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1728182600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,6 +3192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8c5d156c8213c4c9515b4cb7f4feab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerDeck: {fileID: 1267916225}
   PlayerTurn: 0
   turnCount: 0
   turnText: {fileID: 1728182603}

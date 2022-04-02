@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TurnSystem : MonoBehaviour
 {
-
+    public PlayerDeck PlayerDeck;
     public bool PlayerTurn;
     public int turnCount;
 
@@ -21,6 +21,7 @@ public class TurnSystem : MonoBehaviour
         turnCount = 0;
         maxActionPoints = 1;
         currentActionPoints = 1;
+        
         
     }
 
@@ -45,6 +46,7 @@ public class TurnSystem : MonoBehaviour
         turnCount++;
         maxActionPoints++;
         currentActionPoints = maxActionPoints;
+        PlayerDeck.DrawCard();
     }
 
 

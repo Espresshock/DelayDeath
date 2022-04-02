@@ -7,6 +7,8 @@ public class PlayerDeck : MonoBehaviour
 
     public List<Card> deck = new List<Card>();
     public List<Card> container = new List<Card>();
+
+    public GameObject CardToHand;
     public int x;
     public int deckSize;
 
@@ -40,5 +42,10 @@ public class PlayerDeck : MonoBehaviour
             deck[randomIndex] = container[0];
         }
 
+    }
+
+    public void DrawCard()
+    {
+        Instantiate(CardToHand, transform.position, transform.rotation);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ThisCard : MonoBehaviour
 {
-
+    public TurnSystem TurnSystemReference;
     public List<Card> thisCard = new List<Card>();
     public int thisId;
 
@@ -30,6 +30,10 @@ public class ThisCard : MonoBehaviour
 
     public GameObject Hand;
     public int numberOfCardsInDeck;
+
+    public bool canBePlayed;
+    public bool isPlayed;
+    public GameObject Playspace;
     void Start()
     {
         thisCard [0] = CardDataBase.cardList[thisId];
@@ -49,7 +53,10 @@ public class ThisCard : MonoBehaviour
         cardImage.sprite = thisSprite;
 
         Hand = GameObject.Find("PlayerHand");
-        
+        canBePlayed = false;
+        isPlayed = false;
+
+        TurnSystemReference = GameObject.Find("TurnSystem").GetComponent<TurnSystem>();
     }
 
     // Update is called once per frame
@@ -62,5 +69,37 @@ public class ThisCard : MonoBehaviour
         }
 
         staticCardBack = cardBack;
+
+        if(TurnSystemReference.currentActionPoints >= cost && isPlayed == false)
+        {
+            canBePlayed = true;
+        }
+        else canBePlayed = false;
+
+        if(canBePlayed == true)
+        {
+            gameObject.GetComponent<Draggable>().enabled = true;
+        }
+        else 
+        {
+            gameObject.GetComponent<Draggable>().enabled = false;
+            Playspace = GameObject.Find("Playspace");
+
+            if(isPlayed == false && this.transform.parent == Playspace.transform)
+            {
+                PlayCard();
+            }
+        }
+
     }
+
+    
+
+    public void PlayCard()
+    {
+        TurnSystemReference.currentActionPoints -= cost;
+        isPlayed = true;
+    }
+
+
 }
