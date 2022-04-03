@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class Card {
     public int id;
     public string cardName;
-    public int cost; // Time or turn until card is 
-    public int effect;
+    public int triggerSpace; // Replace with active gamespace. The space on which the card is activated 
+    public int activeEffect; // split effect into Active Effect and OnDestroy Effect
+    public int onDestroyEffect;
     public string cardDescription;
 
     public Sprite thisImage;
@@ -18,12 +19,13 @@ public class Card {
 
     }
 
-    public Card(int Id, string CardName, int Cost, int Effect, string CardDescription, Sprite ThisImage)
+    public Card(int Id, string CardName, int Cost, int Effect, int DestroyEffect, string CardDescription, Sprite ThisImage)
     {
         id = Id;
         cardName = CardName;
-        cost = Cost;
-        effect = Effect;
+        triggerSpace = Cost;
+        activeEffect = Effect;
+        onDestroyEffect = DestroyEffect;
         cardDescription = CardDescription;
         thisImage = ThisImage;
     }
